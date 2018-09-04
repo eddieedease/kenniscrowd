@@ -1,0 +1,24 @@
+<div class="jumbotron" ng-controller="newCtrl">
+    <h2>Nieuw evenement</h2>
+    <form role="form">
+        <div class="form-group">
+            <label class="control-label">Evenement naam</label>
+            <input class="form-control" ng-model='eventnaam' type="text">
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="exampleInputEmail1">Onderwerpen</label>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <i class="fa fa-1x fa-check pull-left text-primary"></i>
+                </span>
+                <div ng-repeat="fill in fillings">
+                    <input type="text" class="form-control" ng-model='onderwerpen[$index]' placeholder={{fill}}>
+
+                </div>
+            </div>
+            <hr>
+            <button ng-click="addevent()" class="btn btn-primary">Voeg nieuw evenement toe</button>
+            {{problemm}}
+            <div class="alert alert-success" ng-show="succesvol" role="alert">Evenement "{{eventnaam}}" succesvol aangemaakt!  Key is:<br><br><h4>http://www.kenniscrowd.nl/kenniscrowd/?c={{message}}</h4></div>
+    </form>
+</div>

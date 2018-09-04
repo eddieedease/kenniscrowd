@@ -1,0 +1,41 @@
+ 
+<div class="jumbotron" ng-controller="setCtrl">
+    <h2>Verwijder Gebruikers</h2>
+    <p class="help-block">Selecteer eerst de bijeenkomst en verwijder vervolgens de gebruikers.</p>
+
+    <div class="alert alert-success" ng-show="succesvol" role="alert">Gebruiker(s) succesvol verwijderd!</div>
+
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <div class="col-sm-2">
+                <label for="inputEmail3" class="control-label">Selecteer --&gt;</label>
+            </div>
+
+
+            <div class="col-sm-10">
+                <select class="form-control" ng-model="myDropDown" ng-change="selectAction()">
+                    <option selected disabled hidden value=''></option>
+                    <option ng-repeat="event in events" value='{{event.id}}'>{{event.eventname}}</option>
+                </select>
+            </div>
+
+
+
+            <div class="col-sm-offset-2 col-sm-10">
+                <div ng-show="myDropDown !== ''">
+                    <hr>
+                    <div  ng-repeat='user in filtered = (users| filter:isActive)'> 
+                        <input type="checkbox" ng-model='formData[$index]' ng-true-value='{{user.id}}'>&nbsp;&nbsp;{{user.naam}} - {{user.id}}<br><br>
+
+                    </div><br><button ng-click="showsucces()" class="btn btn-primary">Verwijder gebruiker</button>
+                </div>
+            </div>
+        </div><br>
+        <div class="alert alert-success" ng-show="succesvol" role="alert">Gebruiker(s) succesvol verwijderd!</div>    
+    </form>
+</div>
+
+
+
+
+
